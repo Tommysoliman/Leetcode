@@ -32,6 +32,29 @@ All question records live in [quiz_data.py](quiz_data.py). The `PYTHON_CONCEPTS`
 
 ## Deploy
 
+### GitHub
+
+Create an empty repository on GitHub, then run these commands from this folder:
+
+```powershell
+git remote add origin https://github.com/YOUR_USERNAME/YOUR_REPOSITORY.git
+git branch -M main
+git push -u origin main
+```
+
+Do not commit `.env`; it is excluded by `.gitignore`.
+
+### Railway
+
+1. Sign in at https://railway.app and choose **New Project**.
+2. Select **Deploy from GitHub repo** and choose this repository.
+3. Railway will use `railway.toml` and start the app with Gunicorn.
+4. In the Railway service's **Variables** panel, add `SECRET_KEY`, `OPEN_API_KEY`, and optionally `OPENAI_MODEL`.
+5. Add a persistent volume and set `QUIZ_DATABASE` to a path on that volume, such as `/data/quiz.sqlite3`.
+6. Generate a public domain from the service's **Networking** panel.
+
+The OpenAI key belongs only in Railway variables or the local `.env`; the browser never receives it.
+
 For a small production deployment, install dependencies in the server environment and run a production WSGI server:
 
 ```powershell

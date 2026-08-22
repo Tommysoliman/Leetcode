@@ -53,7 +53,7 @@ Do not commit `.env`; it is excluded by `.gitignore`.
 5. Add a persistent volume and set `QUIZ_DATABASE` to a path on that volume, such as `/data/quiz.sqlite3`.
 6. Generate a public domain from the service's **Networking** panel.
 
-The OpenAI key belongs only in Railway variables or the local `.env`; the browser never receives it.
+The OpenAI key belongs only in Railway variables or the local `.env`; the browser never receives it. Railway does not upload your local `.env`, so add `OPENAI_API_KEY` manually under the service's **Variables** tab and trigger a redeploy. The app also accepts the legacy name `OPEN_API_KEY`.
 
 For a small production deployment, install dependencies in the server environment and run a production WSGI server:
 

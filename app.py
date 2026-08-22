@@ -199,7 +199,7 @@ def create_app(test_config=None):
             return jsonify({"error": "Question context is too large"}), 400
         api_key = os.environ.get("OPEN_API_KEY") or os.environ.get("OPENAI_API_KEY")
         if not api_key:
-            return jsonify({"error": "AI is not configured. Add OPEN_API_KEY to .env and restart the app."}), 503
+            return jsonify({"error": "AI is not configured. Add OPENAI_API_KEY (or OPEN_API_KEY) in Railway Variables, then redeploy."}), 503
         body = json.dumps({
             "model": os.environ.get("OPENAI_MODEL", "gpt-4o-mini"),
             "input": f"You are a patient coding tutor. Explain clearly and concisely.\n\nQuiz context:\n{context}\n\nUser question:\n{prompt}",
